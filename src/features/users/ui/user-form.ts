@@ -1,11 +1,14 @@
-import { Component, computed, input, signal } from '@angular/core';
-import { User } from '../data-access/user.model';
+import { Component, input, signal } from '@angular/core';
 import { debounce, email, form, FormField, max, min, required } from '@angular/forms/signals';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { User } from '../data-access/user.model';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.html',
-  imports: [FormField],
+  styleUrl: './user-form.css',
+  imports: [FormField, MatButtonModule, MatFormFieldModule],
 })
 export class UserForm {
   userName = input<string>('');
