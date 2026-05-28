@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { User } from '../data-access/user.model';
 import { debounce, email, form, FormField, max, min, required } from '@angular/forms/signals';
 
@@ -8,12 +8,17 @@ import { debounce, email, form, FormField, max, min, required } from '@angular/f
   imports: [FormField],
 })
 export class UserForm {
+  userName = input<string>('');
+  firstName = input<string>('');
+  lastName = input<string>('');
+  enabled = input<boolean>(true);
+  email = input<string>('');
   user = signal<User>({
-    userName: '',
-    firstName: '',
-    lastName: '',
-    enabled: true,
-    email: '',
+    userName: this.userName() || '',
+    firstName: this.firstName() || '',
+    lastName: this.lastName() || '',
+    enabled: this.enabled() || true,
+    email: this.email() || '',
   } as User);
 
   userForm = form(this.user, (userPath) => {
