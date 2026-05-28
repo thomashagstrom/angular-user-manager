@@ -245,7 +245,7 @@
       </svg>
       <h1>Hello, {{ titleLower() }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
-      @if (title.toString() !== 'OVERLORD') {
+      @if (titleLower() !== 'overlord') {
         <button (click)="changeTitle()" [disabled]="false">Click here to change the title</button>
       }
     </div>
