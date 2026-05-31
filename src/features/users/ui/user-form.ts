@@ -11,11 +11,11 @@ import { User } from '../data-access/user.model';
   imports: [FormField, MatButtonModule, MatFormFieldModule],
 })
 export class UserForm {
-  userName = input<string>('');
-  firstName = input<string>('');
-  lastName = input<string>('');
+  userName = input<string>();
+  firstName = input<string>();
+  lastName = input<string>();
   enabled = input<boolean>(true);
-  email = input<string>('');
+  email = input<string>();
   user = signal<User>({
     userName: this.userName() || '',
     firstName: this.firstName() || '',

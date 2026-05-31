@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { User } from '../data-access/user.model';
 
 @Injectable({
@@ -24,5 +24,17 @@ export class Users {
 
   getUsers() {
     return this.users.asReadonly();
+  }
+
+  getUserByEmail(email: string) {
+    return computed(() => this.users().find((u) => u.email === email));
+  }
+
+  addUser(user: User) {
+    this.users.update((users) => [...users, user]);
+  }
+
+  removeUser(email: string) {
+    this.users.update((users) => users.filter((u) => u.email !== email));
   }
 }

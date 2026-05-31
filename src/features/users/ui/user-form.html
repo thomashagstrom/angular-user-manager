@@ -2,6 +2,17 @@
   <div class="content">
     <mat-form-field appearance="outline">
       <input matInput type="text" placeholder="Username" [formField]="userForm.userName!" />
+      @if (userForm.userName().invalid()) {
+        <mat-error *ngIf="userForm.userName()?.errors?.['required']"
+          >Username is required.</mat-error
+        >
+        <mat-error *ngIf="userForm.userName()?.errors?.['minlength']"
+          >Username must be at least 3 characters.</mat-error
+        >
+        <mat-error *ngIf="userForm.userName()?.errors?.['maxlength']"
+          >Username cannot exceed 20 characters.</mat-error
+        >
+      }
       <mat-hint>Your username must be between 3 and 20 characters.</mat-hint>
     </mat-form-field>
 

@@ -1,8 +1,13 @@
 import { Routes } from '@angular/router';
-import { UsersPage } from '../features/users/pages/users-page';
-import { App } from './app';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'users' },
-  { path: 'users', component: UsersPage },
+  {
+    path: 'users',
+    loadComponent: () => import('../features/users/pages/users-page').then((m) => m.UsersPage),
+  },
+  {
+    path: 'users/:email',
+    loadComponent: () => import('../features/users/pages/user-page').then((m) => m.UsersPage),
+  },
 ];
