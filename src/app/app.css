@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.brand {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.app-shell {
+  padding: 1.5rem;
+}
+
+.active-link {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
