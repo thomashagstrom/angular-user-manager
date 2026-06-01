@@ -1,6 +1,8 @@
 <h1>Users</h1>
 <ul>
   @for (user of users(); track user.userName) {
-    <li>{{ user.firstName }} ({{ user.email }})</li>
+    <li>
+      <a [routerLink]="['/users', user.email]"> {{ user.firstName }} ({{ user.email }})</a>
+    </li>
   }
 </ul>
