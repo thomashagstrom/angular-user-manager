@@ -31,7 +31,14 @@ export class Users {
   }
 
   addUser(user: User) {
-    this.users.update((users) => [...users, user]);
+    const match = this.users().find((u) => u.email === user.email);
+    if (match) {
+      this.users.update((users) =>
+        users.map((u) => (u.email === user.email ? { ...u, ...user } : u)),
+      );
+    } else {
+      this.users.update((users) => [...users, user]);
+    }
   }
 
   removeUser(email: string) {
