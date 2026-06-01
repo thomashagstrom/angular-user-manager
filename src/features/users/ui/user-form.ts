@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, effect, input, signal } from '@angular/core';
 import { debounce, email, form, FormField, max, min, required } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,9 +20,21 @@ export class UserForm {
     userName: this.userName() || '',
     firstName: this.firstName() || '',
     lastName: this.lastName() || '',
-    enabled: this.enabled() || true,
+    enabled: this.enabled() ?? true,
     email: this.email() || '',
   } as User);
+
+  constructor() {
+    effect(() => {
+      this.user.set({
+        userName: this.userName() || '',
+        firstName: this.firstName() || '',
+        lastName: this.lastName() || '',
+        enabled: this.enabled() ?? true,
+        email: this.email() || '',
+      } as User);
+    });
+  }
 
   userForm = form(this.user, (userPath) => {
     debounce(userPath.userName, 500);
