@@ -1,4 +1,5 @@
 import { Component, effect, input, output, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { debounce, email, form, FormField, max, min, required } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     FormField,
+    FormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
