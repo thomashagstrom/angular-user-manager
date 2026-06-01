@@ -4,4 +4,5 @@
   [lastName]="user()?.lastName"
   [enabled]="user()?.enabled || false"
   [userName]="user()?.userName"
+  (userSaved)="onUserSaved($event)"
 ></app-user-form>

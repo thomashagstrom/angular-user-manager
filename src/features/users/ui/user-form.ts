@@ -1,4 +1,4 @@
-import { Component, effect, input, signal } from '@angular/core';
+import { Component, effect, input, output, signal } from '@angular/core';
 import { debounce, email, form, FormField, max, min, required } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -43,4 +43,20 @@ export class UserForm {
     min(userPath.userName, 3);
     max(userPath.userName, 20);
   });
+
+  // Catch changes to the form and emit the user object when the form is valid
+  userSaved = output<User>();
+
+  onSubmit() {
+    if (this.userForm().valid()) {
+      const newVal = this.userForm().value;
+      if (newVal) {
+        // Emit to the parent component
+        this.userSaved.emit(newVal());
+        console.log('User saved:', newVal());
+      }
+    } else {
+      console.log('Form is invalid, cannot save user.');
+    }
+  }
 }
