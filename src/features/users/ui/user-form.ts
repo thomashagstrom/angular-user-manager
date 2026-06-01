@@ -2,13 +2,25 @@ import { Component, effect, input, output, signal } from '@angular/core';
 import { debounce, email, form, FormField, max, min, required } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
 import { User } from '../data-access/user.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.html',
   styleUrl: './user-form.css',
-  imports: [FormField, MatButtonModule, MatFormFieldModule],
+  imports: [
+    CommonModule,
+    FormField,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatCardModule,
+  ],
 })
 export class UserForm {
   userName = input<string>();
