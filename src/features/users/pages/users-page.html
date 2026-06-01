@@ -1,8 +1,13 @@
 <h1>Users</h1>
-<ul>
-  @for (user of users(); track user.userName) {
-    <li>
-      <a [routerLink]="['/users', user.email]"> {{ user.firstName }} ({{ user.email }})</a>
-    </li>
-  }
-</ul>
+
+@for (user of users(); track user.userName) {
+  <a [routerLink]="['/users', user.email]" class="user-link">
+    <mat-card class="user-card">
+      <mat-card-header>
+        <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content> Enabled: {{ user.enabled }} </mat-card-content>
+    </mat-card></a
+  >
+}
